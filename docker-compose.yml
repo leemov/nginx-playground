@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  nginx: # web service
+    build: ./nginx
+    ports: 
+      - "8888:8888"
+    networks:
+      - nginx-demo
+    depends_on:
+      - web-1
+  web-1: # web service
+    build: ./web
+    networks:
+      - nginx-demo
+    ports:
+      - "8899:8899"
+    
+networks:
+  nginx-demo:
